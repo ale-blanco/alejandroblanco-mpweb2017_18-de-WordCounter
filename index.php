@@ -3,6 +3,7 @@
 use WordCounter\Counter;
 use WordCounter\Filters\FirstCharVowel;
 use WordCounter\Filters\MoreTowChars;
+use WordCounter\Filters\WordInTheList;
 
 require_once 'vendor/autoload.php';
 
@@ -17,3 +18,5 @@ echo 'Palabras totales: ' . $counter->getCountOfWord(null) . PHP_EOL;
 echo 'Palabras que empiecen por vocal: ' . $counter->getCountOfWord(new FirstCharVowel()) . PHP_EOL;
 
 echo 'Palabras de más de dos caracteres: ' . $counter->getCountOfWord(new MoreTowChars()) . PHP_EOL;
+
+echo 'En listado de palabras clave: ' . $counter->getCountOfWord(new WordInTheList()) . PHP_EOL;
