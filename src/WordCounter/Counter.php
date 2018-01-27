@@ -2,15 +2,23 @@
 
 namespace WordCounter;
 
+use WordCounter\Filters\Filter;
+
 class Counter
 {
-    public function getCountOfWord(string $textToCount): int
+    private $wordsList;
+
+    public function __construct(string $textToCount)
     {
-        $listWords = preg_split('/[\s,:;\.]+/', $textToCount, -1, PREG_SPLIT_NO_EMPTY);
-        if ($listWords === false) {
+        $this->wordsList = preg_split('/[\s,:;\.]+/', $textToCount, -1, PREG_SPLIT_NO_EMPTY);
+        if ($this->wordsList === false) {
             throw new \Exception('Error al cortar el texto en palabras');
         }
+    }
 
+    public function getCountOfWord(?Filter $filter): int
+    {
+        $listWords = ($filter !== null) ? $filter->filterWords($this->wordsList) : $this->wordsList;
         return count($listWords);
     }
 }
