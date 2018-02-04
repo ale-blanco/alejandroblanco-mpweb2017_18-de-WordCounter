@@ -2,11 +2,11 @@
 
 namespace WordCounter\Filters;
 
-abstract class Filter
+abstract class FilterGeneral implements IFilter
 {
     private $previousFilter;
 
-    public function __construct(?Filter $previousFilter)
+    public function __construct(?IFilter $previousFilter)
     {
         $this->previousFilter = $previousFilter;
     }

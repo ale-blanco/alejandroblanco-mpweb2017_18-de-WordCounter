@@ -2,7 +2,7 @@
 
 namespace WordCounter;
 
-use WordCounter\Filters\Filter;
+use WordCounter\Filters\IFilter;
 
 class Counter
 {
@@ -16,7 +16,7 @@ class Counter
         }
     }
 
-    public function getCountOfWord(?Filter $filter): int
+    public function getCountOfWord(?IFilter $filter): int
     {
         $listWords = ($filter !== null) ? $filter->filterWords($this->wordsList) : $this->wordsList;
         return count($listWords);

@@ -3,6 +3,8 @@
 use WordCounter\Counter;
 use WordCounter\Filters\FirstCharVowel;
 use WordCounter\Filters\MoreTowChars;
+use WordCounter\Filters\NotBool;
+use WordCounter\Filters\OrBool;
 use WordCounter\Filters\WordInTheList;
 
 require_once 'vendor/autoload.php';
@@ -31,3 +33,12 @@ echo 'En listado de palabras clave que empiecen por vocal: '
 
 echo 'En listado de palabras clave que empiecen por vocal y tengan más de dos carácteres: '
     . $counter->getCountOfWord(new WordInTheList(new FirstCharVowel(new MoreTowChars(null)))) . PHP_EOL;
+
+echo 'Palabras clave y que no empiezen por vocal: '
+    . $counter->getCountOfWord(new WordInTheList(new NotBool(new FirstCharVowel(null)))) . PHP_EOL;
+
+echo 'Palabras que no empiecen por vocal o que sí empiecen por vocal pero tengan mas de dos carácteres: '
+    . $counter->getCountOfWord(new OrBool(
+        new NotBool(new FirstCharVowel(null)),
+        new FirstCharVowel(new MoreTowChars(null))
+    )) . PHP_EOL;

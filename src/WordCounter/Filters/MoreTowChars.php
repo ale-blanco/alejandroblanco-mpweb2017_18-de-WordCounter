@@ -2,7 +2,7 @@
 
 namespace WordCounter\Filters;
 
-class MoreTowChars extends Filter
+class MoreTowChars extends FilterGeneral
 {
     protected function isValidWord(string $word): bool
     {
