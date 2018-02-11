@@ -6,7 +6,7 @@ abstract class FilterGeneral implements IFilter
 {
     private $previousFilter;
 
-    public function __construct(?IFilter $previousFilter)
+    public function __construct(?IFilter $previousFilter = null)
     {
         $this->previousFilter = $previousFilter;
     }

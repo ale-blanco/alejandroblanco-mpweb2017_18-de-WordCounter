@@ -16,7 +16,7 @@ class Counter
         }
     }
 
-    public function getCountOfWord(?IFilter $filter): int
+    public function countWords(?IFilter $filter = null): int
     {
         $listWords = ($filter !== null) ? $filter->filterWords($this->wordsList) : $this->wordsList;
         return count($listWords);
